@@ -19,7 +19,7 @@ window.$ = jquery
 
 /*prototype*/
 Vue.prototype.initUrl = window.location.protocol+'//'+window.location.host;
-Vue.prototype.baseUrl = 'https://5bc23298.ngrok.io'; // 'http://localhost/pictlr/public';
+Vue.prototype.baseUrl = 'http://localhost/pictlr/public';
 
 Vue.prototype.urlThumbnailProfile = Vue.prototype.baseUrl+'/img/profile/thumbnails/';
 Vue.prototype.urlFotoProfile = Vue.prototype.baseUrl+'/img/profile/photos/';
