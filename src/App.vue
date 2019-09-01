@@ -35,7 +35,7 @@
                     <li>
                         <router-link :to="{name: 'home'}" :class="navHome">
                             <div class="an-icn">
-                                <i class="fa fa-lg fa-home"></i>
+                                <i class="txt-site txt-13 fa fa-lg fa-home"></i>
                                 <div class="txt-site txt-9">Home</div>
                             </div>
                         </router-link>
@@ -43,21 +43,21 @@
                     <li>
                         <router-link :to="{name: 'trendings'}" :class="navTrend">
                             <div class="an-icn">
-                                <i class="fas fa-lg fa-compass"></i>
+                                <i class="txt-site txt-13 fas fa-lg fa-compass"></i>
                                 <div class="txt-site txt-9">Trendings</div>
                             </div>
                         </router-link>
                     </li>
                     <!-- <li @click="openMenu">
                         <div class="an-icn">
-                            <i class="fas fa-lg fa-plus"></i>
+                            <i class="txt-site txt-13 fas fa-lg fa-plus"></i>
                             <div class="txt-site txt-9">Create</div>
                         </div>
                     </li> -->
                     <li>
                         <router-link :to="{name: 'notifications'}" :class="navNotif">
                             <div class="an-icn">
-                                <i class="fas fa-lg fa-bell"></i>
+                                <i class="txt-site txt-13 fas fa-lg fa-bell"></i>
                                 <div class="txt-site txt-9">Notifications</div>
                             </div>
                         </router-link>
@@ -71,7 +71,7 @@
                             }"
                             :class="navAccount">
                             <div class="an-icn">
-                                <i class="fas fa-lg fa-user"></i>
+                                <i class="txt-site txt-13 fas fa-lg fa-user"></i>
                                 <div class="txt-site txt-9">Account</div>
                             </div>
                         </router-link>

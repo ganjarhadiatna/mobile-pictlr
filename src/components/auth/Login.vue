@@ -97,54 +97,52 @@ export default {
                 'password': this.user.password
             })
             .then(response => {
-                if (response.data.status == 'unauthorized') 
+                //console.log(response.data);
+                if (response.data.status === 'unauthorized') 
                 {
                     vm.frameErr = true;
                     vm.message = e.response.responseText;
                     vm.valLogin = 'Try Again';
                     vm.disLogin = false;
                 }
-                if (response.data.status == 'invalide') 
+                if (response.data.status === 'email-invalide') 
                 {
                     vm.valLogin = 'Try again';
                     vm.disLogin = false;
-                    if (response.data.message.password) 
-                    {
-                        vm.frameErrPass = true;
-                        vm.messagePass = response.data.message.password[0];
-                    }
-                    if (response.data.message.email) 
+                    if (response.data.message) 
                     {
                         vm.frameErrEmail = true;
-                        vm.messageEmail = response.data.message.email[0];
+                        vm.messageEmail = response.data.message;
                     }
                 }
-                if (response.data.status == 'success') 
+                if (response.data.status === 'password-invalide') 
+                {
+                    vm.valLogin = 'Try again';
+                    vm.disLogin = false;
+                    if (response.data.message) 
+                    {
+                        vm.frameErrPass = true;
+                        vm.messagePass = response.data.message;
+                    }
+                }
+                if (response.data.status === 'success') 
                 {
                     vm.valLogin = 'Success';
                     vm.disLogin = true;
-                    this.$cookie.set('jwt', response.data.me.access_token, 7);
-                    this.$cookie.set('id', response.data.me.id, 7);
-                    this.$cookie.set('name', response.data.me.name, 7);
-                    this.$cookie.set('username', response.data.me.username, 7);
-                    this.$cookie.set('foto', response.data.me.foto, 7);
+                    this.$cookie.set('jwt', response.data.me.access_token, 2);
+                    this.$cookie.set('id', response.data.me.id, 2);
+                    this.$cookie.set('name', response.data.me.name, 2);
+                    this.$cookie.set('username', response.data.me.username, 2);
+                    this.$cookie.set('foto', response.data.me.foto, 2);
                     window.location = vm.initUrl;
-                    //console.log(response.data);
-                    
                 }
             })
             .catch(e => {
                 //main error
-                if (e.response.status == 405) 
+                if (e.response.status === 405) 
                 {
                     var msg = e.response.statusText;
                 }
-                // if (e.response.data.status) 
-                // {
-                //     var msg = 'Please check back your email or password';
-                // } else {
-                //     var msg = e.response.data.statusText;
-                // }
                 vm.frameErr = true;
                 vm.message = msg;
                 vm.valLogin = 'Try Again';

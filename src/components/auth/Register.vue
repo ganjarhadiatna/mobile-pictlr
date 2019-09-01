@@ -143,35 +143,35 @@ export default {
                     vm.valRegister = 'Try Again';
                     vm.disRegister = false;
                 }
-                if (response.data.status == 'invalide') 
+                if (response.data.status === 'email-invalide') 
                 {
-                    vm.valRegister = 'Try again';
-                    vm.disRegister = false;
-                    if (response.data.message.password) 
-                    {
-                        vm.frameErrPass = true;
-                        vm.messagePass = response.data.message.password[0];
-                    }
-                    if (response.data.message.email) 
+                    vm.valLogin = 'Try again';
+                    vm.disLogin = false;
+                    if (response.data.message) 
                     {
                         vm.frameErrEmail = true;
-                        vm.messageEmail = response.data.message.email[0];
+                        vm.messageEmail = response.data.message;
                     }
-                    if (response.data.message.name) 
+                }
+                if (response.data.status === 'password-invalide') 
+                {
+                    vm.valLogin = 'Try again';
+                    vm.disLogin = false;
+                    if (response.data.message) 
                     {
-                        vm.frameErrName = true;
-                        vm.messageName = response.data.message.name[0];
+                        vm.frameErrPass = true;
+                        vm.messagePass = response.data.message;
                     }
                 }
                 if (response.data.status == 'success') 
                 {
                     vm.valRegister = 'Success';
                     vm.disRegister = true;
-                    this.$cookie.set('jwt', response.data.access_token, 7);
-                    this.$cookie.set('id', response.data.me.original.id, 7);
-                    this.$cookie.set('name', response.data.me.original.name, 7);
-                    this.$cookie.set('username', response.data.me.original.username, 7);
-                    this.$cookie.set('foto', response.data.me.original.foto, 7);
+                    this.$cookie.set('jwt', response.data.me.access_token, 2);
+                    this.$cookie.set('id', response.data.me.id, 2);
+                    this.$cookie.set('name', response.data.me.name, 2);
+                    this.$cookie.set('username', response.data.me.username, 2);
+                    this.$cookie.set('foto', response.data.me.foto, 2);
                     window.location = vm.initUrl;
                 }
             })
